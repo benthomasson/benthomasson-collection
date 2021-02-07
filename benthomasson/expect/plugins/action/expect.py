@@ -12,6 +12,11 @@ class ActionModule(ActionBase):
         if task_vars is None:
             task_vars = dict()
         result = super(ActionModule, self).run(tmp, task_vars)
+        pc = self._play_context
+        pprint(["become", pc.become])
+        pprint(["become_pass", pc.become_pass])
+        pprint(["become_method", pc.become_method])
+        pprint(["pc.become_user", pc.become_user])
         command = self._task.args.get('command', None)
         script = self._task.args.get('script', None)
         pprint(command)
